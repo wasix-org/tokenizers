@@ -1,8 +1,8 @@
 [package]
 authors = ["Nicolas Patry <nicolas@huggingface.co>"]
 edition = "2021"
-name    = "node"
-version = "0.21.4-dev.0"
+name = "node"
+version = "0.21.3"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -10,10 +10,10 @@ version = "0.21.4-dev.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi        = "2"
+napi = "2"
 napi-derive = "2"
-serde       = { version = "1.0.163", features = ["derive"] }
-tokenizers  = { path = "../../tokenizers/" }
+serde = { version = "1.0.163", features = ["derive"] }
+tokenizers = { path = "../../tokenizers/" }
 ahash = { version = "0.8.11", features = ["serde"] }
 
 [build-dependencies]

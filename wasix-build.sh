@@ -21,6 +21,7 @@ pushd bindings/python
 # Set this to the name of the wasix toolchain you have locally
 # if you're not building your toolchain from source.
 rustup override set wasix-dev
+rm Cargo.lock
 cargo update -p getrandom --precise 0.3.3
 cargo update -p target-lexicon --precise 0.13.2
 cargo update -p cc --precise 1.2.27
@@ -34,7 +35,7 @@ maturin build --target wasm32-wasmer-wasi-dl --release --interpreter python3.13 
 
 cd target/wheels
 mkdir -p temp
-unzip tokenizers-0.21.4.dev0-cp39-abi3-any.whl -d temp
+unzip tokenizers-0.21.3-cp39-abi3-any.whl -d temp
 wasm-opt \
   ./temp/tokenizers/tokenizers.abi3.so \
   -o ./temp/tokenizers/tokenizers.abi3.so \
@@ -42,8 +43,8 @@ wasm-opt \
   --enable-threads --enable-mutable-globals --enable-bulk-memory \
   --enable-bulk-memory-opt --enable-exception-handling \
   --no-validation
-rm tokenizers-0.21.4.dev0-cp39-abi3-any.whl
+rm tokenizers-0.21.3-cp39-abi3-any.whl
 cd temp
-zip -r ../tokenizers-0.21.4.dev0-cp39-abi3-any.whl ./
+zip -r ../tokenizers-0.21.3-cp39-abi3-any.whl ./
 cd ..
 rm -rf temp
